@@ -1,0 +1,15 @@
+gcc -I. -I../../include -Winline -Wall -std=gnu89 -Wchar-subscripts -Wmissing-declarations -Wnested-externs -Wpointer-arith -Wcast-align -Wsign-compare -g -O3 -c osinfo.c -fPIC -DPIC -o osinfo.o
+gcc -I. -I../../include -Winline -Wall -std=gnu89 -Wchar-subscripts -Wmissing-declarations -Wnested-externs -Wpointer-arith -Wcast-align -Wsign-compare -g -O3 -c helper.c -fPIC -DPIC -o helper.o
+gcc -I. -I../../include -Winline -Wall -std=gnu89 -Wchar-subscripts -Wmissing-declarations -Wnested-externs -Wpointer-arith -Wcast-align -Wsign-compare -g -O3 -c log.c -fPIC -DPIC -o log.o
+gcc -I. -I../../include -Winline -Wall -std=gnu89 -Wchar-subscripts -Wmissing-declarations -Wnested-externs -Wpointer-arith -Wcast-align -Wsign-compare -g -O3 -c mem.c -fPIC -DPIC -o mem.o
+gcc -I. -I../../include -Winline -Wall -std=gnu89 -Wchar-subscripts -Wmissing-declarations -Wnested-externs -Wpointer-arith -Wcast-align -Wsign-compare -g -O3 -c cpu.c -fPIC -DPIC -o cpu.o
+gcc -I. -I../../include -Winline -Wall -std=gnu89 -Wchar-subscripts -Wmissing-declarations -Wnested-externs -Wpointer-arith -Wcast-align -Wsign-compare -g -O3 -c task.c -fPIC -DPIC -o task.o
+gcc -I. -I../../include -Winline -Wall -std=gnu89 -Wchar-subscripts -Wmissing-declarations -Wnested-externs -Wpointer-arith -Wcast-align -Wsign-compare -g -O3 -c swap.c -fPIC -DPIC -o swap.o
+
+ar qcs libmonita.a *.o
+rm -f ../../libmonita.a ../../test/linux/libmonita.a ../../../libmonita.a
+cp libmonita.a ../../
+cp libmonita.a ../../test/linux/
+cp libmonita.a ../../../
+
+rm -f *.o

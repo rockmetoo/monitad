@@ -1,0 +1,7 @@
+gcc -I../../include -I../../os/linux  -Wall -rdynamic -g -O3 -fomit-frame-pointer -o testMem testMem.c libmonita.a -Xlinker -zmuldefs -lpthread  -lm -lstdc++
+
+gcc -I../../include -I../../os/linux  -Wall -rdynamic -g -O3 -fomit-frame-pointer -o testCPU testCPU.c libmonita.a -Xlinker -zmuldefs -lpthread  -lm -lstdc++
+
+gcc -I../../include -I../../os/linux  -Wall -rdynamic -g -O3 -fomit-frame-pointer -o testTask testTask.c libmonita.a -Xlinker -zmuldefs -lpthread  -lm -lstdc++
+
+gcc -I../../include -I../../os/linux  -Wall -rdynamic -g -O3 -fomit-frame-pointer -o testSwap testSwap.c libmonita.a -Xlinker -zmuldefs -lpthread  -lm -lstdc++
