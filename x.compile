@@ -22,10 +22,10 @@ gcc -Wall -g -O3 -fomit-frame-pointer -fPIC -ansi -pedantic -J4 -c -o dictionary
 
 
 if [ "$ARCH" = "32" ]; then
-    gcc -Wall -rdynamic -g -O3 -fomit-frame-pointer $WRITESTRINGS $UNUSEDRESULT $UNUSEDVARIABLE $WNOSIGNCOMPARE -o monitad monitad.cpp hook.o helper.o log.o iniparser.o dictionary.o liboauth.a libmonita.a -I/usr/local/include -Ilibtop/include -Ilibtop/os/linux -Ioauth/ -L/usr/lib -Xlinker -zmuldefs -lpthread -lcurl -lm -lzmq -lstdc++
+    gcc -Wall -rdynamic -g -O3 -fomit-frame-pointer $WRITESTRINGS $UNUSEDRESULT $UNUSEDVARIABLE $WNOSIGNCOMPARE -o monitad monitad.cpp hook.o helper.o log.o iniparser.o dictionary.o liboauth.a libmonita.a -I/usr/local/include -Ilibtop/include -Ilibtop/os/linux -Ioauth/ -L/usr/lib -Xlinker -zmuldefs -lpthread -lcurl -lm -lzmq -lssl -lcrypto -lstdc++
     
 elif [ "$ARCH" = "64" ]; then
-    gcc -Wall -rdynamic -g -O3 -fomit-frame-pointer $WRITESTRINGS $UNUSEDRESULT $UNUSEDVARIABLE $WNOSIGNCOMPARE -o monitad monitad.cpp hook.o helper.o log.o iniparser.o dictionary.o liboauth.a libmonita.a -I/usr/local/include -Ilibtop/include -Ilibtop/os/linux -Ioauth/ -L/usr/local/lib -Xlinker -zmuldefs -lpthread -lcurl -lm -lzmq -lstdc++
+    gcc -Wall -rdynamic -g -O3 -fomit-frame-pointer $WRITESTRINGS $UNUSEDRESULT $UNUSEDVARIABLE $WNOSIGNCOMPARE -o monitad monitad.cpp hook.o helper.o log.o iniparser.o dictionary.o liboauth.a libmonita.a -I/usr/local/include -Ilibtop/include -Ilibtop/os/linux -Ioauth/ -L/usr/local/lib -Xlinker -zmuldefs -lpthread -lcurl -lm -lzmq -lssl -lcrypto -lstdc++
 fi
 
 rm -f *.o

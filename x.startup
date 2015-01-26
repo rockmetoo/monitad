@@ -12,7 +12,7 @@ blue='\e[0;34m'
 NC='\e[0m'
 
 PIDFILE=/var/run/monitad.pid
-DAEMON=/home/monita/monitad
+DAEMON=/home/monitad/monitad
 
 processCheck() {
     ps -p $1 > /dev/null

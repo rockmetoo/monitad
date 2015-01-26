@@ -15,10 +15,10 @@
 #include "monitad.h"
 
 #include <stdio.h>
-#include <unistd.h>
 #include <curl/curl.h>
 #include <curl/easy.h>
 #include <exception>
+#include <sys/resource.h>
 
 #include "log.h"
 #include "helper.h"
@@ -131,7 +131,7 @@ void runTheWholePlot()
 	{
 		nSize += sprintf(
 			&szPostString[nSize],
-			"cpu:{total:%llu,user:%llu,sys:%llu,nice:%llu,idle:%llu,frequency:%llu},",
+			"cpu:{total:%lu,user:%lu,sys:%lu,nice:%lu,idle:%lu,frequency:%lu},",
 			cpuBuff.total, cpuBuff.user, cpuBuff.sys, cpuBuff.nice, cpuBuff.idle, cpuBuff.frequency
 		);
 	}
@@ -140,7 +140,7 @@ void runTheWholePlot()
 	{
 		nSize += sprintf(
 			&szPostString[nSize],
-			"mem:{total:%llu,used:%llu,free:%llu,shared:%llu,buffer:%llu,cached:%llu,user:%llu,locked:%llu},",
+			"mem:{total:%lu,used:%lu,free:%lu,shared:%lu,buffer:%lu,cached:%lu,user:%lu,locked:%lu},",
 			memBuff.total, memBuff.used, memBuff.free, memBuff.shared, memBuff.buffer,
 			memBuff.cached, memBuff.user, memBuff.locked
 		);
@@ -276,7 +276,7 @@ static void daemonExit(int nCode)
 		}
 	}
 
-	logNotice("monitad exiting... at %s in %d\n", __FILE__, __LINE__);
+	logNotice("monitad exiting... at %s [%d]\n", __FILE__, __LINE__);
 
 	exit(nCode);
 }
@@ -605,6 +605,7 @@ void processOptions()
 		struct option* pszOpt = 0;
 
 		nRes = getopt_long(m_argc, m_argv, "h?", longOptions, &optionIndex);
+
 		if(nRes == -1) break;
 
 		switch(nRes){
@@ -701,7 +702,7 @@ int main(int argc, char** argv)
 
 	// XXX: IMPORTANT - for development environment please use local.*
 	//sprintf(COCKPIT_MONITA_POST_URL, "https://monita.autobloom.com/recvMonitaData.php");
-	sprintf(COCKPIT_MONITA_POST_URL, "http://local.smithcp.com:8080/recvMonitaData.php");
+	sprintf(COCKPIT_MONITA_POST_URL, "http://local.cockpit.com:80/recvMonitaData.php");
 
 	// only except HUP, TERM and QUIT signal
 	sigemptyset(&mask);
